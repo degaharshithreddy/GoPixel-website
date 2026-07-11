@@ -10,7 +10,7 @@ const steps = [
 export default function BuildKit() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-16">
-      <div className="grid lg:grid-cols-2 gap-10 items-center mb-14">
+      <div className="grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <h3 className="text-2xl font-bold text-ink mb-1">Build Your Welcome Kit</h3>
           <p className="text-primary font-semibold mb-3">Your kit, your way!</p>
@@ -21,28 +21,24 @@ export default function BuildKit() {
           <MagneticButton variant="primary">Start Building →</MagneticButton>
         </div>
 
-        <img
-          src="https://images.unsplash.com/photo-1607082349566-187342175e2f?w=800&q=80"
-          alt="Welcome kit box"
-          className="rounded-2xl aspect-video w-full object-cover shadow-lg"
-        />
-      </div>
-
-      <h4 className="font-bold text-ink mb-6">How it works?</h4>
-      <div className="flex flex-wrap items-start gap-6">
-        {steps.map((s, i) => (
-          <div key={s.n} className="flex items-center gap-6">
-            <div className="flex flex-col items-center gap-2 text-center w-28">
-              <div className="w-14 h-14 rounded-full bg-primary-light flex items-center justify-center font-bold text-primary text-lg">
-                {s.n}
+        <div>
+          <h4 className="font-bold text-ink mb-6">How it works?</h4>
+          <div className="grid grid-cols-4 gap-2">
+            {steps.map((s, i) => (
+              <div key={s.n} className="flex items-center">
+                <div className="flex flex-col items-center gap-2 text-center">
+                  <div className="w-12 h-12 shrink-0 rounded-full bg-primary-light flex items-center justify-center font-bold text-primary text-lg">
+                    {s.n}
+                  </div>
+                  <p className="text-xs text-muted font-medium leading-tight">{s.label}</p>
+                </div>
+                {i < steps.length - 1 && (
+                  <span className="text-muted/40 text-lg -mt-6 shrink-0">→</span>
+                )}
               </div>
-              <p className="text-sm text-muted font-medium">{s.label}</p>
-            </div>
-            {i < steps.length - 1 && (
-              <span className="hidden sm:block text-muted/40 text-xl">→</span>
-            )}
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );
